@@ -45,13 +45,15 @@ class Wechat extends Component
 
     /**
      * 获取 EasyWeChat 微信实例
-     *
+     * 
+     * @param array $config
      * @return Factory|\EasyWeChat\OfficialAccount\Application
      */
-    public function getApp()
+    public function getApp($config = [])
     {
+        empty($config) && $config = Yii::$app->params['wechatConfig'];
         if (!self::$_app instanceof \EasyWeChat\OfficialAccount\Application) {
-            self::$_app = Factory::officialAccount(Yii::$app->params['wechatConfig']);
+            self::$_app = Factory::officialAccount($config);
             !empty($this->rebinds) && self::$_app = $this->rebind(self::$_app);
         }
 
@@ -60,13 +62,15 @@ class Wechat extends Component
 
     /**
      * 获取 EasyWeChat 微信支付实例
-     *
+     * 
+     * @param array $config
      * @return Factory|\EasyWeChat\Payment\Application
      */
-    public function getPayment()
+    public function getPayment($config = [])
     {
+        empty($config) && $config = Yii::$app->params['wechatPaymentConfig'];
         if (!self::$_payment instanceof \EasyWeChat\Payment\Application) {
-            self::$_payment = Factory::payment(Yii::$app->params['wechatPaymentConfig']);
+            self::$_payment = Factory::payment($config);
             !empty($this->rebinds) && self::$_payment = $this->rebind(self::$_payment);
         }
 
@@ -76,12 +80,14 @@ class Wechat extends Component
     /**
      * 获取 EasyWeChat 微信小程序实例
      *
+     * @param array $config
      * @return Factory|\EasyWeChat\MiniProgram\Application
      */
-    public function getMiniProgram()
+    public function getMiniProgram($config = [])
     {
+        empty($config) && $config = Yii::$app->params['wechatMiniProgramConfig'];
         if (!self::$_miniProgram instanceof \EasyWeChat\MiniProgram\Application) {
-            self::$_miniProgram = Factory::miniProgram(Yii::$app->params['wechatMiniProgramConfig']);
+            self::$_miniProgram = Factory::miniProgram($config);
             !empty($this->rebinds) && self::$_miniProgram = $this->rebind(self::$_miniProgram);
         }
 
