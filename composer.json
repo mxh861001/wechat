@@ -1,0 +1,22 @@
+{
+	"name": "mxh861001/wechat",
+	"description": "WeChat SDK for yii2",
+	"keywords": ["yii2", "wechat", "easywechat", "php"],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "maxiaohu35@gmail.com"
+		}
+	],
+	"type": "yii2-extension",
+	"require": {
+		"php": ">=7.0",
+		"yiisoft/yii2": "~2.0.6",
+		"overtrue/wechat": "~4.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"mxh861001\\easywechat\\": "./src"
+		}
+	}
+}
